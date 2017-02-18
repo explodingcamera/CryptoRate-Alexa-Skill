@@ -1,0 +1,10 @@
+GetExchangeRateIntent wie viel kostet {Currency}
+GetExchangeRateIntent wie viel kosten {Count} {Currency}
+GetExchangeRateIntent wie viel kostet {Count} {Currency}
+GetExchangeRateIntent wie teuer sind {Count} {Currency}
+GetExchangeRateIntent wie teuer ist {Currency}
+
+GetMarketCapIntent wie hoch ist die Marktkapitalisierung von {Currency}
+GetMarketCapIntent wie viel Marktkapitalisierung von {Currency}
+GetMarketCapIntent was ist die Marktkapitalisierung von {Currency}
+GetMarketCapIntent was hat {Currency} für eine Marktkapitalisierung

@@ -1,0 +1,12 @@
+{
+  "DATA": {
+    "CryptoRate": "CryptoRate",
+    "HELP_REPROMPT": "Du kannst nach dem Preis oder der Marktkapitalisierung einer Kryptowährung fragen... Wie kann ich dir helfen?",
+    "HELP": "Wie kann ich dir helfen?",
+    "EXCHANGERATE": {
+      "SINGULAR": "Ein %s ist momentan %s US-Dollar und %s cents wert.",
+      "PLURAL": "%s %s sind momentan %s US-Dollar und %s cents wert."
+    },
+    "MARKETCAP": "%s hat momentan eine Marktkapitalisierung von %s US-Dollar."
+  }
+}

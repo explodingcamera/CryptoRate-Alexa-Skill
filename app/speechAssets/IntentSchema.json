@@ -1,0 +1,9 @@
+{"intents": [
+    {"intent": "GetExchangeRateIntent", "slots": [{"name": "Currency", "type": "CRYPTOCURRENCY"}, {"name": "Count", "type": "AMAZON.NUMBER"}]},
+    {"intent": "GetMarketCapIntent", "slots": [{"name": "Currency", "type": "CRYPTOCURRENCY"}]},
+    {"intent": "DontKnowIntent"},
+    {"intent": "AMAZON.StartOverIntent"},
+    {"intent": "AMAZON.RepeatIntent"},
+    {"intent": "AMAZON.HelpIntent"}
+  ]
+}
