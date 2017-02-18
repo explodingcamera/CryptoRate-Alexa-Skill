@@ -6,14 +6,24 @@ export default [
 	function (request, response) {
 		const currency = request.slot('Currency');
 
-		console.log(request.data.request.locale, 1);
+		if (!currency) {
+			return new Promise(resolve => {
+				return resolve(response.say(request.__('DATA.HELP_REPROMPT')));
+			});
+		}
 		return get({uri: 'https://api.coinmarketcap.com/v1/ticker/', json: true}).then(data => {
-			if (!currency) {
-				return new Promise(resolve => {
-					return resolve(response.say(request.__('DATA.HELP_REPROMPT')));
-				});
-			}
-			const fuse = new Fuse(data, {keys: ['name', 'symbol'], threshold: 0.5});
+			const fuse = new Fuse(data, {
+				shouldSort: true,
+				threshold: 0.4,
+				location: 0,
+				distance: 100,
+				maxPatternLength: 38,
+				minMatchCharLength: 1,
+				keys: [
+					'symbol',
+					'id'
+				]
+			});
 			const result = fuse.search(currency)[0];
 
 			if (result) {

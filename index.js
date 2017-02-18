@@ -6,8 +6,8 @@ import app from './app';
 const expressApp = new Express();
 
 app.pre = function (request) {
-	console.log(1);
 	let locale;
+	console.log(request.data);
 	if (request.data && request.data.request && request.data.request.locale) {
 		locale = request.data.request.locale || 'de-DE';
 	} else {
@@ -20,7 +20,7 @@ app.pre = function (request) {
 		directory: `${__dirname}/locales`,
 		register: request
 	});
-	i18n.setLocale(request.data.request.locale);
+	i18n.setLocale(locale || 'en-US');
 };
 
 app.express({

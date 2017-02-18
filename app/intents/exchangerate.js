@@ -10,7 +10,6 @@ export default [
 			count = 1;
 		}
 
-		console.log(request.data.request.locale);
 		if (!currency) {
 			return new Promise(resolve => {
 				return resolve(response.say(request.__('DATA.HELP_REPROMPT')));
@@ -18,7 +17,18 @@ export default [
 		}
 
 		return get({uri: 'https://api.coinmarketcap.com/v1/ticker/', json: true}).then(data => {
-			const fuse = new Fuse(data, {keys: ['name', 'symbol']});
+			const fuse = new Fuse(data, {
+				shouldSort: true,
+				threshold: 0.4,
+				location: 0,
+				distance: 100,
+				maxPatternLength: 38,
+				minMatchCharLength: 1,
+				keys: [
+					'symbol',
+					'id'
+				]
+			});
 			const result = fuse.search(currency)[0];
 
 			if (result) {
