@@ -10,6 +10,7 @@ export default [
 			count = 1;
 		}
 
+		console.log(request.data.request.locale);
 		if (!currency) {
 			return new Promise(resolve => {
 				return resolve(response.say(request.__('DATA.HELP_REPROMPT')));

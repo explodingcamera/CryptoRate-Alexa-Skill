@@ -1,21 +1,15 @@
 import i18n from 'i18n';
-import Express, {Router as router} from 'express';
+import Express from 'express';
 
 import app from './app';
 
 const expressApp = new Express();
 
-app.express({expressApp,
-	router: router(),
-	endpoint: 'alexa/cryptorate',
-	checkCert: false,
-	debug: true
-});
-
-app.pre = function (req) {
+app.pre = function (request) {
+	console.log(1);
 	let locale;
-	if (req.data && req.data.request && req.data.request.locale) {
-		locale = req.data.request.locale || 'de-DE';
+	if (request.data && request.data.request && request.data.request.locale) {
+		locale = request.data.request.locale || 'de-DE';
 	} else {
 		locale = 'en-US';
 	}
@@ -24,9 +18,18 @@ app.pre = function (req) {
 		defaultLocale: locale,
 		objectNotation: true,
 		directory: `${__dirname}/locales`,
-		register: req
+		register: request
 	});
+	i18n.setLocale(request.data.request.locale);
 };
+
+app.express({
+	expressApp,
+	endpoint: 'alexa/cryptorate',
+	checkCert: false,
+	debug: true
+});
+
 app.post = function (request, response, type, exception) {
 	if (exception) {
     // always turn an exception into a successful response

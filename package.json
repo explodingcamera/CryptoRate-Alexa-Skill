@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "alexa-app": "^3.1.0",
+    "alexa-app": "github:alexa-js/alexa-app",
     "alexa-sdk": "^1.0.7",
     "alexa-verifier": "^0.3.0",
     "babel-eslint": "^7.1.1",
